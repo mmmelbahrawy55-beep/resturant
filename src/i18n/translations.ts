@@ -1,13 +1,10 @@
 export type Language = 'en' | 'ar';
 
 export interface Translations {
-  // Header
   logo: string;
   tagline: string;
   reserve: string;
   cart: string;
-  
-  // Hero
   heroBadge: string;
   heroTitle1: string;
   heroTitle2: string;
@@ -15,14 +12,10 @@ export interface Translations {
   exploreMenu: string;
   bookTable: string;
   scrollDown: string;
-  
-  // Stats
   dishes: string;
   years: string;
   chefs: string;
   rating: string;
-  
-  // Features
   whyChooseUs: string;
   experienceTitle: string;
   experienceSubtitle: string;
@@ -34,8 +27,6 @@ export interface Translations {
   feature3Desc: string;
   feature4Title: string;
   feature4Desc: string;
-  
-  // Menu
   ourMenu: string;
   menuTitle: string;
   menuSubtitle: string;
@@ -43,22 +34,17 @@ export interface Translations {
   unavailable: string;
   noItems: string;
   loading: string;
-  
-  // Categories
+  searchPlaceholder: string;
   catBBQ: string;
   catPizza: string;
   catBurgers: string;
   catPies: string;
   catDrinks: string;
   catDesserts: string;
-  
-  // CTA
   specialOffer: string;
   ctaTitle: string;
   ctaDesc: string;
   makeReservation: string;
-  
-  // Cart
   yourCart: string;
   browseMenu: string;
   subtotal: string;
@@ -67,8 +53,6 @@ export interface Translations {
   clearCart: string;
   checkout: string;
   emptyCart: string;
-  
-  // Reservation
   reservationTitle: string;
   fullName: string;
   email: string;
@@ -79,8 +63,6 @@ export interface Translations {
   specialRequests: string;
   cancel: string;
   submitReservation: string;
-  
-  // Footer
   footerDesc: string;
   quickLinks: string;
   menuLink: string;
@@ -92,13 +74,24 @@ export interface Translations {
   privacy: string;
   terms: string;
   copyright: string;
-  
-  // Badges
   popular: string;
   new: string;
   seasonal: string;
   veg: string;
   spicy: string;
+  chefsPicks: string;
+  chefsPicksSubtitle: string;
+  gallery: string;
+  gallerySubtitle: string;
+  viewAll: string;
+  orderNow: string;
+  quickView: string;
+  addToOrder: string;
+  quantity: string;
+  backToTop: string;
+  openNow: string;
+  reserveTitle: string;
+  reserveDesc: string;
 }
 
 const en: Translations = {
@@ -106,7 +99,6 @@ const en: Translations = {
   tagline: 'Premium Dining Experience',
   reserve: 'Reserve',
   cart: 'Cart',
-  
   heroBadge: '✦ EST. 2010 ✦',
   heroTitle1: 'Where Every Bite',
   heroTitle2: 'Tells a Story',
@@ -114,12 +106,10 @@ const en: Translations = {
   exploreMenu: 'Explore Menu',
   bookTable: 'Book a Table',
   scrollDown: 'Scroll Down',
-  
   dishes: 'Signature Dishes',
   years: 'Years of Excellence',
   chefs: 'Master Chefs',
   rating: 'Customer Rating',
-  
   whyChooseUs: 'Why Choose Us',
   experienceTitle: 'An Unforgettable Experience',
   experienceSubtitle: 'Every detail is crafted to perfection',
@@ -131,27 +121,24 @@ const en: Translations = {
   feature3Desc: 'Curated wines and craft beverages',
   feature4Title: 'Live Music',
   feature4Desc: 'Enjoy live jazz every Friday & Saturday',
-  
   ourMenu: 'Our Menu',
   menuTitle: 'Gourmet Collection',
   menuSubtitle: '100+ handcrafted dishes prepared with passion',
   addToCart: '+ Add to Cart',
   unavailable: 'Unavailable',
-  noItems: 'No items in this category yet.',
+  noItems: 'No items found.',
   loading: 'Loading our gourmet menu...',
-  
+  searchPlaceholder: 'Search our menu...',
   catBBQ: 'BBQ & Grills',
   catPizza: 'Pizza',
   catBurgers: 'Burgers',
   catPies: 'Pies & Cakes',
   catDrinks: 'Drinks',
   catDesserts: 'Desserts',
-  
   specialOffer: 'Special Offer',
   ctaTitle: 'Book Your Table Today',
   ctaDesc: 'Reserve your spot and enjoy a complimentary appetizer with every booking.',
   makeReservation: 'Make Reservation',
-  
   yourCart: 'Your Cart',
   browseMenu: 'Browse Menu',
   subtotal: 'Subtotal',
@@ -160,7 +147,6 @@ const en: Translations = {
   clearCart: 'Clear Cart',
   checkout: 'Checkout',
   emptyCart: 'Your cart is empty',
-  
   reservationTitle: 'Make a Reservation',
   fullName: 'Full Name',
   email: 'Email',
@@ -171,7 +157,6 @@ const en: Translations = {
   specialRequests: 'Special Requests',
   cancel: 'Cancel',
   submitReservation: 'Submit Reservation',
-  
   footerDesc: 'Premium dining experience since 2010. Where culinary artistry meets warm hospitality.',
   quickLinks: 'Quick Links',
   menuLink: 'Our Menu',
@@ -183,12 +168,24 @@ const en: Translations = {
   privacy: 'Privacy Policy',
   terms: 'Terms of Service',
   copyright: '© 2025 The Gourmet Bar. All rights reserved.',
-  
   popular: 'Popular',
   new: 'New',
   seasonal: 'Seasonal',
   veg: 'Veg',
   spicy: 'Spicy',
+  chefsPicks: "Chef's Picks",
+  chefsPicksSubtitle: 'Hand-selected favorites from our master chefs',
+  gallery: 'Our Gallery',
+  gallerySubtitle: 'A glimpse into the Gourmet Bar experience',
+  viewAll: 'View All',
+  orderNow: 'Order Now',
+  quickView: 'Quick View',
+  addToOrder: 'Add to Order',
+  quantity: 'Qty',
+  backToTop: 'Back to Top',
+  openNow: 'Open Now',
+  reserveTitle: 'Reserve Your Experience',
+  reserveDesc: 'Book your table and let us create an unforgettable evening for you.',
 };
 
 const ar: Translations = {
@@ -196,7 +193,6 @@ const ar: Translations = {
   tagline: 'تجربة طعام فاخرة',
   reserve: 'احجز طاولة',
   cart: 'السلة',
-  
   heroBadge: '✦ تأسس عام 2010 ✦',
   heroTitle1: 'حيث تروي',
   heroTitle2: 'كل قضيمة قصة',
@@ -204,12 +200,10 @@ const ar: Translations = {
   exploreMenu: 'استكشف القائمة',
   bookTable: 'احجز طاولة',
   scrollDown: 'مرر للأسفل',
-  
   dishes: 'وصفات مميزة',
   years: 'سنوات من التميز',
   chefs: 'طهاة محترفون',
   rating: 'تقييم العملاء',
-  
   whyChooseUs: 'لماذا تختارنا',
   experienceTitle: 'تجربة لا تُنسى',
   experienceSubtitle: 'كل تفصيلة مدروسة لتناسبك',
@@ -221,27 +215,24 @@ const ar: Translations = {
   feature3Desc: 'نبيذ مختار ومشروبات حرفية',
   feature4Title: 'موسيقى حية',
   feature4Desc: 'استمتع بموسيقى الجاز كل جمعة وسبت',
-  
   ourMenu: 'قائمتنا',
   menuTitle: 'المجموعة الفاخرة',
   menuSubtitle: 'أكثر من 100 وصفة محضرة بشغف',
   addToCart: '+ أضف للسلة',
   unavailable: 'غير متاح',
-  noItems: 'لا توجد أصناف في هذا التصنيف بعد.',
+  noItems: 'لا توجد نتائج.',
   loading: 'جارٍ تحميل القائمة...',
-  
+  searchPlaceholder: 'ابحث في القائمة...',
   catBBQ: 'مشاوي وشواء',
   catPizza: 'بيتزا',
   catBurgers: 'برجر',
   catPies: 'معجنات وكيك',
   catDrinks: 'مشروبات',
   catDesserts: 'حلويات',
-  
   specialOffer: 'عرض خاص',
   ctaTitle: 'احجز طاولتك اليوم',
   ctaDesc: 'احجز مقعدك واستمتع بمقبلات مجانية مع كل حجز.',
   makeReservation: 'احجز الآن',
-  
   yourCart: 'سلة التسوق',
   browseMenu: 'تصفح القائمة',
   subtotal: 'المجموع الفرعي',
@@ -250,7 +241,6 @@ const ar: Translations = {
   clearCart: 'تفريغ السلة',
   checkout: 'إتمام الطلب',
   emptyCart: 'سلة التسوق فارغة',
-  
   reservationTitle: 'حجز طاولة',
   fullName: 'الاسم الكامل',
   email: 'البريد الإلكتروني',
@@ -261,7 +251,6 @@ const ar: Translations = {
   specialRequests: 'طلبات خاصة',
   cancel: 'إلغاء',
   submitReservation: 'تأكيد الحجز',
-  
   footerDesc: 'تجربة طعام فاخرة منذ 2010. حيث يلتقي فن الطهي بالضيافة الدافئة.',
   quickLinks: 'روابط سريعة',
   menuLink: 'قائمتنا',
@@ -273,12 +262,24 @@ const ar: Translations = {
   privacy: 'سياسة الخصوصية',
   terms: 'شروط الخدمة',
   copyright: '© 2025 ذا جورميت بار. جميع الحقوق محفوظة.',
-  
   popular: 'مميز',
   new: 'جديد',
   seasonal: 'موسمي',
   veg: 'نباتي',
   spicy: 'حار',
+  chefsPicks: 'اختيارات الشيف',
+  chefsPicksSubtitle: 'أطباق مختارة بعناية من طهاةنا المحترفين',
+  gallery: 'معرض الصور',
+  gallerySubtitle: 'نظرة على تجربة جورميت بار',
+  viewAll: 'عرض الكل',
+  orderNow: 'اطلب الآن',
+  quickView: 'عرض سريع',
+  addToOrder: 'أضف للطلب',
+  quantity: 'الكمية',
+  backToTop: 'العودة للأعلى',
+  openNow: 'مفتوح الآن',
+  reserveTitle: 'احجز تجربتك',
+  reserveDesc: 'احجز طاولتك ودعنا نصنع لك أمسية لا تُنسى.',
 };
 
 export const translations: Record<Language, Translations> = { en, ar };

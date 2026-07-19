@@ -6,6 +6,7 @@ import { formatPrice } from '../utils/formatters';
 interface MenuItemProps {
   item: MenuItem;
   onAddToCart: (item: MenuItem) => void;
+  onQuickView?: () => void;
 }
 
 const categoryGradients: Record<MenuCategory, string> = {
@@ -17,47 +18,48 @@ const categoryGradients: Record<MenuCategory, string> = {
   DESSERTS: 'linear-gradient(135deg, #9333ea, #7e22ce)',
 };
 
-export const MenuItem: React.FC<MenuItemProps> = ({ item, onAddToCart }) => {
-  const { t, language } = useApp();
+export const MenuItem: React.FC<MenuItemProps> = ({ item, onAddToCart, onQuickView }) => {
+  const { t } = useApp();
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="menu-item">
+    <div 
+      className="menu-item"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {item.image && (
         <div className="menu-item-image">
           {!imageLoaded && (
-            <div className="menu-item-image-placeholder" style={{ background: 'linear-gradient(135deg, #f0f0f0, #e0e0e0)' }} />
+            <div className="menu-item-image-placeholder" />
           )}
           <img 
             src={item.image} 
             alt={item.name} 
             loading="lazy"
             onLoad={() => setImageLoaded(true)}
-            style={{ opacity: imageLoaded ? 1 : 0, transition: 'opacity 0.5s ease' }}
+            style={{ opacity: imageLoaded ? 1 : 0 }}
           />
           <div className="menu-item-badges-overlay">
             {item.isPopular && (
-              <span className="badge popular">
-                <span style={{ marginInlineEnd: '4px' }}>★</span> {t('popular')}
-              </span>
+              <span className="badge popular">★ {t('popular')}</span>
             )}
             {item.isNew && (
-              <span className="badge new">
-                <span style={{ marginInlineEnd: '4px' }}>✦</span> {t('new')}
-              </span>
+              <span className="badge new">✦ {t('new')}</span>
             )}
             {item.isSeasonal && (
-              <span className="badge seasonal">
-                <span style={{ marginInlineEnd: '4px' }}>◆</span> {t('seasonal')}
-              </span>
+              <span className="badge seasonal">◆ {t('seasonal')}</span>
             )}
           </div>
-          <div 
-            className="menu-item-category-badge" 
-            style={{ background: categoryGradients[item.category] }}
-          >
+          <div className="menu-item-category-badge" style={{ background: categoryGradients[item.category] }}>
             {item.category}
           </div>
+          {onQuickView && (
+            <button className="menu-item-quickview" onClick={(e) => { e.stopPropagation(); onQuickView(); }}>
+              {t('quickView')}
+            </button>
+          )}
         </div>
       )}
       <div className="menu-item-content">
