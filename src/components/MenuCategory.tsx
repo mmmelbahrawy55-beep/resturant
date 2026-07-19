@@ -8,31 +8,31 @@ interface MenuCategoryProps {
   onClick: () => void;
 }
 
+const categoryConfig: Record<MenuCategory, { label: string; emoji: string }> = {
+  BBQ: { label: 'BBQ & Grills', emoji: '🔥' },
+  PIZZA: { label: 'Pizza', emoji: '🍕' },
+  BURGERS: { label: 'Burgers', emoji: '🍔' },
+  PIES: { label: 'Pies & Cakes', emoji: '🥧' },
+  DRINKS: { label: 'Drinks', emoji: '🥤' },
+  DESSERTS: { label: 'Desserts', emoji: '🍰' },
+};
+
 export const MenuCategory: React.FC<MenuCategoryProps> = ({ 
   category, 
   itemsCount, 
   isActive, 
   onClick 
 }) => {
-  const getCategoryLabel = (category: MenuCategory): string => {
-    const labels: Record<MenuCategory, string> = {
-      BBQ: 'BBQ & Grills',
-      PIZZA: 'Pizza',
-      BURGERS: 'Burgers',
-      PIES: 'Pies',
-      DRINKS: 'Drinks',
-      DESSERTS: 'Desserts',
-    };
-    return labels[category];
-  };
+  const config = categoryConfig[category];
 
   return (
     <button
       className={`menu-category ${isActive ? 'active' : ''}`}
       onClick={onClick}
     >
-      <span className="menu-category-label">{getCategoryLabel(category)}</span>
-      <span className="menu-category-count">({itemsCount})</span>
+      <span className="menu-category-emoji">{config.emoji}</span>
+      <span className="menu-category-label">{config.label}</span>
+      <span className="menu-category-count">{itemsCount}</span>
     </button>
   );
 };
