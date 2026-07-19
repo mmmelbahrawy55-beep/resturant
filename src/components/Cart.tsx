@@ -1,5 +1,6 @@
 import React from 'react';
 import { CartItem } from '../types/menu';
+import { useApp } from '../context/AppContext';
 import { formatPrice } from '../utils/formatters';
 
 interface CartProps {
@@ -10,22 +11,23 @@ interface CartProps {
 }
 
 export const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemoveItem, onClose }) => {
+  const { t } = useApp();
   const getSubtotal = () => items.reduce((total, item) => total + item.price * item.quantity, 0);
-  const getTax = (subtotal: number) => subtotal * 0.08; // 8% tax
+  const getTax = (subtotal: number) => subtotal * 0.08;
   const getTotal = (subtotal: number, tax: number) => subtotal + tax;
 
   return (
     <div className="cart-overlay">
       <div className="cart-container">
         <div className="cart-header">
-          <h2>Your Cart</h2>
+          <h2>{t('yourCart')}</h2>
           <button className="close-btn" onClick={onClose}>×</button>
         </div>
         
         {items.length === 0 ? (
           <div className="cart-empty">
-            <p>Your cart is empty</p>
-            <button className="menu-btn" onClick={onClose}>Browse Menu</button>
+            <p>{t('emptyCart')}</p>
+            <button className="menu-btn" onClick={onClose}>{t('browseMenu')}</button>
           </div>
         ) : (
           <>
@@ -34,7 +36,7 @@ export const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemoveIte
                 <div key={item.id} className="cart-item">
                   <div className="cart-item-info">
                     <h4 className="cart-item-name">{item.name}</h4>
-                    {item.notes && <p className="cart-item-notes">Note: {item.notes}</p>}
+                    {item.notes && <p className="cart-item-notes">{item.notes}</p>}
                   </div>
                   <div className="cart-item-controls">
                     <button
@@ -66,22 +68,22 @@ export const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemoveIte
             
             <div className="cart-summary">
               <div className="cart-summary-row">
-                <span>Subtotal:</span>
+                <span>{t('subtotal')}</span>
                 <span>{formatPrice(getSubtotal())}</span>
               </div>
               <div className="cart-summary-row">
-                <span>Tax (8%):</span>
+                <span>{t('tax')}</span>
                 <span>{formatPrice(getTax(getSubtotal()))}</span>
               </div>
               <div className="cart-summary-row total">
-                <span>Total:</span>
+                <span>{t('total')}</span>
                 <span>{formatPrice(getTotal(getSubtotal(), getTax(getSubtotal())))}</span>
               </div>
             </div>
             
             <div className="cart-actions">
-              <button className="clear-cart-btn" onClick={() => items.forEach(item => onRemoveItem(item.id))}>Clear Cart</button>
-              <button className="checkout-btn">Checkout</button>
+              <button className="clear-cart-btn" onClick={() => items.forEach(item => onRemoveItem(item.id))}>{t('clearCart')}</button>
+              <button className="checkout-btn">{t('checkout')}</button>
             </div>
           </>
         )}

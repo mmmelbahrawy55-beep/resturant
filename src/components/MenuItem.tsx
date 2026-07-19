@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import { MenuItem, MenuCategory } from '../types/menu';
+import { useApp } from '../context/AppContext';
 import { formatPrice } from '../utils/formatters';
 
 interface MenuItemProps {
   item: MenuItem;
   onAddToCart: (item: MenuItem) => void;
 }
-
-const categoryColors: Record<MenuCategory, string> = {
-  BBQ: '#dc2626',
-  PIZZA: '#ea580c',
-  BURGERS: '#16a34a',
-  PIES: '#d97706',
-  DRINKS: '#2563eb',
-  DESSERTS: '#9333ea',
-};
 
 const categoryGradients: Record<MenuCategory, string> = {
   BBQ: 'linear-gradient(135deg, #dc2626, #991b1b)',
@@ -26,15 +18,11 @@ const categoryGradients: Record<MenuCategory, string> = {
 };
 
 export const MenuItem: React.FC<MenuItemProps> = ({ item, onAddToCart }) => {
+  const { t, language } = useApp();
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
-      className="menu-item"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="menu-item">
       {item.image && (
         <div className="menu-item-image">
           {!imageLoaded && (
@@ -50,17 +38,17 @@ export const MenuItem: React.FC<MenuItemProps> = ({ item, onAddToCart }) => {
           <div className="menu-item-badges-overlay">
             {item.isPopular && (
               <span className="badge popular">
-                <span style={{ marginRight: '4px' }}>★</span> Popular
+                <span style={{ marginInlineEnd: '4px' }}>★</span> {t('popular')}
               </span>
             )}
             {item.isNew && (
               <span className="badge new">
-                <span style={{ marginRight: '4px' }}>✦</span> New
+                <span style={{ marginInlineEnd: '4px' }}>✦</span> {t('new')}
               </span>
             )}
             {item.isSeasonal && (
               <span className="badge seasonal">
-                <span style={{ marginRight: '4px' }}>◆</span> Seasonal
+                <span style={{ marginInlineEnd: '4px' }}>◆</span> {t('seasonal')}
               </span>
             )}
           </div>
@@ -72,23 +60,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({ item, onAddToCart }) => {
           </div>
         </div>
       )}
-      {!item.image && (
-        <div className="menu-item-header">
-          <div 
-            className="menu-item-category" 
-            style={{ background: categoryGradients[item.category] }}
-          >
-            {item.category}
-          </div>
-          <div className="menu-item-badges">
-            {item.isVegetarian && <span className="badge vegetarian">Veg</span>}
-            {item.isSpicy && <span className="badge spicy">Spicy</span>}
-            {item.isPopular && <span className="badge popular">Popular</span>}
-            {item.isNew && <span className="badge new">New</span>}
-            {item.isSeasonal && <span className="badge seasonal">Seasonal</span>}
-          </div>
-        </div>
-      )}
       <div className="menu-item-content">
         <div className="menu-item-name-row">
           <h3 className="menu-item-name">{item.name}</h3>
@@ -97,15 +68,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({ item, onAddToCart }) => {
         <p className="menu-item-description">{item.description}</p>
         <div className="menu-item-footer">
           <div className="menu-item-tags">
-            {item.isVegetarian && <span className="badge vegetarian">Veg</span>}
-            {item.isSpicy && <span className="badge spicy">🌶 Spicy</span>}
+            {item.isVegetarian && <span className="badge vegetarian">{t('veg')}</span>}
+            {item.isSpicy && <span className="badge spicy">🌶 {t('spicy')}</span>}
           </div>
           <button
             className="menu-item-add-btn"
             onClick={() => onAddToCart(item)}
             disabled={!item.available}
           >
-            {item.available ? '+ Add to Cart' : 'Unavailable'}
+            {item.available ? t('addToCart') : t('unavailable')}
           </button>
         </div>
       </div>

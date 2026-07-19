@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Reservation } from '../types/menu';
+import { useApp } from '../context/AppContext';
 import { generateId } from '../utils/formatters';
 
 interface ReservationFormProps {
@@ -8,6 +9,7 @@ interface ReservationFormProps {
 }
 
 export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onClose }) => {
+  const { t } = useApp();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,13 +49,13 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
     <div className="reservation-form-overlay">
       <div className="reservation-form-container">
         <div className="reservation-form-header">
-          <h2>Make a Reservation</h2>
+          <h2>{t('reservationTitle')}</h2>
           <button className="close-btn" onClick={onClose}>×</button>
         </div>
         <form onSubmit={handleSubmit} className="reservation-form">
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="name">Full Name *</label>
+              <label htmlFor="name">{t('fullName')} *</label>
               <input
                 type="text"
                 id="name"
@@ -64,7 +66,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
               />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email *</label>
+              <label htmlFor="email">{t('email')} *</label>
               <input
                 type="email"
                 id="email"
@@ -77,7 +79,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="phone">Phone *</label>
+              <label htmlFor="phone">{t('phone')} *</label>
               <input
                 type="tel"
                 id="phone"
@@ -88,7 +90,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
               />
             </div>
             <div className="form-group">
-              <label htmlFor="date">Date *</label>
+              <label htmlFor="date">{t('date')} *</label>
               <input
                 type="date"
                 id="date"
@@ -102,7 +104,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="time">Time *</label>
+              <label htmlFor="time">{t('time')} *</label>
               <input
                 type="time"
                 id="time"
@@ -113,7 +115,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
               />
             </div>
             <div className="form-group">
-              <label htmlFor="guests">Number of Guests *</label>
+              <label htmlFor="guests">{t('guests')} *</label>
               <select
                 id="guests"
                 name="guests"
@@ -128,7 +130,7 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="specialRequests">Special Requests</label>
+            <label htmlFor="specialRequests">{t('specialRequests')}</label>
             <textarea
               id="specialRequests"
               name="specialRequests"
@@ -138,8 +140,8 @@ export const ReservationForm: React.FC<ReservationFormProps> = ({ onSubmit, onCl
             />
           </div>
           <div className="form-actions">
-            <button type="button" className="cancel-btn" onClick={onClose}>Cancel</button>
-            <button type="submit" className="submit-btn">Submit Reservation</button>
+            <button type="button" className="cancel-btn" onClick={onClose}>{t('cancel')}</button>
+            <button type="submit" className="submit-btn">{t('submitReservation')}</button>
           </div>
         </form>
       </div>
